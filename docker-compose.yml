@@ -1,0 +1,51 @@
+services:
+  pipeline:
+    build:
+      context: .
+    container_name: china-orange-pipeline
+    environment:
+      PIPELINE_API_KEY: ${PIPELINE_API_KEY:-change_me_pipeline_key}
+      TZ: ${GENERIC_TIMEZONE:-America/Sao_Paulo}
+    volumes:
+      - ./data:/app/data
+      - ./output:/app/output
+      - ./logs:/app/logs
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+    networks: [orange-net]
+
+  n8n:
+    image: docker.n8n.io/n8nio/n8n:latest
+    container_name: china-orange-n8n
+    environment:
+      N8N_BASIC_AUTH_ACTIVE: ${N8N_BASIC_AUTH_ACTIVE:-true}
+      N8N_BASIC_AUTH_USER: ${N8N_BASIC_AUTH_USER:-admin}
+      N8N_BASIC_AUTH_PASSWORD: ${N8N_BASIC_AUTH_PASSWORD:-change_me}
+      N8N_ENCRYPTION_KEY: ${N8N_ENCRYPTION_KEY:-change_this_with_a_long_random_value}
+      GENERIC_TIMEZONE: ${GENERIC_TIMEZONE:-America/Sao_Paulo}
+      TZ: ${GENERIC_TIMEZONE:-America/Sao_Paulo}
+      PIPELINE_API_KEY: ${PIPELINE_API_KEY:-change_me_pipeline_key}
+    volumes:
+      - ./n8n_data:/home/node/.n8n
+      - ./workflows:/workflows:ro
+    ports:
+      - "5678:5678"
+    depends_on: [pipeline]
+    restart: unless-stopped
+    networks: [orange-net]
+
+  dashboard:
+    image: nginx:alpine
+    container_name: china-orange-dashboard
+    volumes:
+      - ./output:/usr/share/nginx/html:ro
+    ports:
+      - "8080:80"
+    depends_on: [pipeline]
+    restart: unless-stopped
+    networks: [orange-net]
+
+networks:
+  orange-net:
+    driver: bridge

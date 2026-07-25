@@ -1,7 +1,364 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="refresh" content="300"><title>China Orange Intelligence</title>
-<style>:root{color-scheme:dark;font-family:Arial,sans-serif}body{margin:0;background:#10141b;color:#eef2f7}main{max-width:1100px;margin:auto;padding:32px 20px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px}.card{background:#1a202a;border:1px solid #2b3543;border-radius:14px;padding:18px}.label,.subtitle{color:#9ba8b8}.value{font-size:1.65rem;font-weight:700;margin-top:8px}.section{margin-top:24px}table{width:100%;border-collapse:collapse}th,td{padding:11px;border-bottom:1px solid #2b3543;text-align:left}a{color:#8bc4ff}</style></head><body><main>
-<h1>China Orange Intelligence</h1><p class="subtitle">Monitoramento de preço atacadista de laranja na China</p>
-{% if metrics.status != 'ok' %}<div class="card"><strong>Pipeline sem dados suficientes</strong><p>{{ metrics.message }}</p></div>{% else %}
-<section class="grid"><div class="card"><div class="label">Preço atual</div><div class="value">{{ '%.2f'|format(metrics.current_price) }} {{ metrics.currency }}/{{ metrics.unit }}</div></div><div class="card"><div class="label">Variação</div><div class="value">{% if metrics.change_pct is not none %}{{ '%+.2f'|format(metrics.change_pct) }}%{% else %}N/D{% endif %}</div></div><div class="card"><div class="label">Média</div><div class="value">{{ '%.2f'|format(metrics.mean) }}</div></div><div class="card"><div class="label">Amostras</div><div class="value">{{ metrics.sample_size }}</div></div></section>
-<section class="card section"><h2>Resumo estatístico</h2><table><tr><th>Mercado</th><td>{{ metrics.market_name }}</td></tr><tr><th>Data</th><td>{{ metrics.reference_date }}</td></tr><tr><th>Mediana</th><td>{{ '%.2f'|format(metrics.median) }}</td></tr><tr><th>Mínimo / Máximo</th><td>{{ '%.2f'|format(metrics.minimum) }} / {{ '%.2f'|format(metrics.maximum) }}</td></tr><tr><th>Desvio padrão</th><td>{{ '%.4f'|format(metrics.standard_deviation) }}</td></tr><tr><th>Coeficiente de variação</th><td>{% if metrics.coefficient_variation_pct is not none %}{{ '%.2f'|format(metrics.coefficient_variation_pct) }}%{% else %}N/D{% endif %}</td></tr><tr><th>Média móvel</th><td>{{ '%.2f'|format(metrics.moving_average) }} (janela {{ metrics.moving_average_window }})</td></tr><tr><th>Outliers</th><td>{{ metrics.outlier_count }}</td></tr><tr><th>Nível da evidência</th><td>{{ metrics.evidence_level }}</td></tr></table></section>
-<section class="card section"><h2>Fonte</h2><p>{{ metrics.source_name }} — <a href="{{ metrics.source_url }}">{{ metrics.source_url }}</a></p><p class="subtitle">{{ metrics.disclaimer }}</p></section>{% endif %}</main></body></html>
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+    >
+
+    <meta
+        http-equiv="refresh"
+        content="300"
+    >
+
+    <title>China Orange Intelligence</title>
+
+    <style>
+        :root {
+            color-scheme: dark;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            background: #10141b;
+            color: #eef2f7;
+        }
+
+        main {
+            max-width: 1100px;
+            margin: auto;
+            padding: 32px 20px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fit, minmax(210px, 1fr));
+            gap: 16px;
+        }
+
+        .card {
+            background: #1a202a;
+            border: 1px solid #2b3543;
+            border-radius: 14px;
+            padding: 18px;
+        }
+
+        .label,
+        .subtitle {
+            color: #9ba8b8;
+        }
+
+        .value {
+            font-size: 1.65rem;
+            font-weight: 700;
+            margin-top: 8px;
+        }
+
+        .section {
+            margin-top: 24px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 11px;
+            border-bottom: 1px solid #2b3543;
+            text-align: left;
+        }
+
+        a {
+            color: #8bc4ff;
+        }
+
+        .benchmark {
+            border-color: #9c6b2f;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 5px 9px;
+            border-radius: 8px;
+            background: #2b3543;
+            font-size: 0.82rem;
+            margin-bottom: 12px;
+        }
+    </style>
+</head>
+
+<body>
+<main>
+
+    <h1>China Orange Intelligence</h1>
+
+    <p class="subtitle">
+        Monitoramento de preço atacadista de laranja na China
+    </p>
+
+    {% set reference = metrics.commercial_reference %}
+
+    <!-- Referência comercial da Tridge -->
+    {% if reference %}
+    <section class="section">
+
+        <h2>Referência comercial</h2>
+
+        <div class="grid">
+
+            <div class="card benchmark">
+                <div class="badge">
+                    Estimativa {{ reference.reference_year }}
+                </div>
+
+                <div class="label">
+                    Preço de referência
+                </div>
+
+                <div class="value">
+                    US$
+                    {{ '%.2f'|format(reference.price_usd_kg) }}/kg
+                </div>
+            </div>
+
+            <div class="card benchmark">
+                <div class="badge">
+                    Caixa padrão
+                </div>
+
+                <div class="label">
+                    Peso comercial
+                </div>
+
+                <div class="value">
+                    {{ '%.1f'|format(reference.box_weight_kg) }} kg
+                </div>
+            </div>
+
+            <div class="card benchmark">
+                <div class="badge">
+                    Valor calculado
+                </div>
+
+                <div class="label">
+                    Preço por caixa
+                </div>
+
+                <div class="value">
+                    US$
+                    {{ '%.2f'|format(reference.box_price_usd) }}
+                </div>
+            </div>
+
+        </div>
+
+        <div class="card section">
+
+            <strong>Memória de cálculo</strong>
+
+            <p>
+                US$
+                {{ '%.2f'|format(reference.price_usd_kg) }}/kg
+                ×
+                {{ '%.1f'|format(reference.box_weight_kg) }} kg
+                =
+                US$
+                {{ '%.2f'|format(reference.box_price_usd) }}
+                por caixa
+            </p>
+
+            <p class="subtitle">
+                Benchmark comercial independente.
+                Não representa necessariamente o mesmo mercado,
+                período ou metodologia do preço local do Xinfadi.
+            </p>
+
+        </div>
+
+    </section>
+    {% endif %}
+
+    {% if metrics.status != 'ok' %}
+
+        <div class="card section">
+            <strong>Pipeline sem dados suficientes</strong>
+            <p>{{ metrics.message }}</p>
+        </div>
+
+    {% else %}
+
+        <section class="section">
+
+            <h2>Mercado atacadista local</h2>
+
+            <div class="grid">
+
+                <div class="card">
+                    <div class="label">Preço atual</div>
+
+                    <div class="value">
+                        {{ '%.2f'|format(metrics.current_price) }}
+                        {{ metrics.currency }}/{{ metrics.unit }}
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="label">Variação</div>
+
+                    <div class="value">
+                        {% if metrics.change_pct is not none %}
+                            {{ '%+.2f'|format(metrics.change_pct) }}%
+                        {% else %}
+                            N/D
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="label">Média</div>
+
+                    <div class="value">
+                        {{ '%.2f'|format(metrics.mean) }}
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="label">Amostras</div>
+
+                    <div class="value">
+                        {{ metrics.sample_size }}
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="card section">
+
+            <h2>Resumo estatístico</h2>
+
+            <table>
+                <tr>
+                    <th>Mercado</th>
+                    <td>{{ metrics.market_name }}</td>
+                </tr>
+
+                <tr>
+                    <th>Data</th>
+                    <td>{{ metrics.reference_date }}</td>
+                </tr>
+
+                <tr>
+                    <th>Mediana</th>
+                    <td>
+                        {{ '%.2f'|format(metrics.median) }}
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>Mínimo / Máximo</th>
+                    <td>
+                        {{ '%.2f'|format(metrics.minimum) }}
+                        /
+                        {{ '%.2f'|format(metrics.maximum) }}
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>Desvio padrão</th>
+                    <td>
+                        {{ '%.4f'|format(metrics.standard_deviation) }}
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>Coeficiente de variação</th>
+                    <td>
+                        {% if metrics.coefficient_variation_pct is not none %}
+                            {{
+                                '%.2f'
+                                |format(
+                                    metrics.coefficient_variation_pct
+                                )
+                            }}%
+                        {% else %}
+                            N/D
+                        {% endif %}
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>Média móvel</th>
+                    <td>
+                        {{ '%.2f'|format(metrics.moving_average) }}
+                        (janela
+                        {{ metrics.moving_average_window }})
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>Outliers</th>
+                    <td>{{ metrics.outlier_count }}</td>
+                </tr>
+
+                <tr>
+                    <th>Nível da evidência</th>
+                    <td>{{ metrics.evidence_level }}</td>
+                </tr>
+            </table>
+
+        </section>
+
+        <section class="card section">
+
+            <h2>Fonte do mercado local</h2>
+
+            <p>
+                {{ metrics.source_name }}
+                —
+                <a href="{{ metrics.source_url }}">
+                    {{ metrics.source_url }}
+                </a>
+            </p>
+
+            <p class="subtitle">
+                {{ metrics.disclaimer }}
+            </p>
+
+        </section>
+
+    {% endif %}
+
+    {% if reference %}
+    <section class="card section">
+
+        <h2>Fonte do benchmark comercial</h2>
+
+        <p>
+            {{ reference.source_name }}
+            —
+            <a href="{{ reference.source_url }}">
+                {{ reference.source_url }}
+            </a>
+        </p>
+
+        <p class="subtitle">
+            Referência de {{ reference.reference_year }}:
+            US$ {{ '%.2f'|format(reference.price_usd_kg) }}/kg.
+            Caixa comercial considerada:
+            {{ '%.1f'|format(reference.box_weight_kg) }} kg.
+        </p>
+
+    </section>
+    {% endif %}
+
+</main>
+</body>
+</html>

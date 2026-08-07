@@ -1,0 +1,15 @@
+{
+  "sources": [
+    {
+      "name": "Xinhua Index / Chongqing Three Gorges Citrus Trading Center",
+      "type": "xinhua_orange_juice",
+      "enabled": true,
+      "confidenceScore": 80,
+      "listingUrl": "https://indices.cnfin.com/xinhua%C2%B7quanguoxianchengchandijiagezhishu/index.html?idx=0&thirdIdx=3319095",
+      "seedUrls": [
+        "https://indices.cnfin.com/jgzs/wenzixiangqingye/detail/20260709/4438026_1.html"
+      ],
+      "maxArticles": 20
+    }
+  ]
+}

@@ -5,12 +5,15 @@ POC para coleta, normalização e análise histórica de preços de laranja e su
 ## Arquitetura
 
 ```text
+GitHub Actions 07:00 UTC -> coletor validado -> JSON/CSV -> React/MUI (GitHub Pages)
+
+Modo completo opcional:
 React/MUI -> Spring REST/OpenAPI -> collectors -> normalizer -> consensus -> PostgreSQL
-                                      ^                         |
-                                      +--- scheduler 07:00 UTC -+
 ```
 
-- `backend/`: Java 21, Spring Boot, JPA, Flyway, scheduler e OpenAPI.
+- `scripts/collect_static.py`: coleta gratuita diária e acrescenta somente observações inéditas.
+- `frontend/public/data/`: histórico público em JSON e CSV, versionado no próprio GitHub.
+- `backend/`: modo completo opcional em Java 21, Spring Boot, JPA, Flyway, scheduler e OpenAPI.
 - `frontend/`: React, TypeScript, Vite, Material UI e Chart.js.
 - `collectors/`, `pipeline.py` e demais arquivos Python: POC anterior preservada como referência; não participa do Compose atual.
 - Consenso diário: média ponderada pelo `confidence_score`, criado somente com duas ou mais fontes não demonstrativas equivalentes (data, país, produto e categoria).
@@ -28,7 +31,9 @@ Acessos:
 - OpenAPI/Swagger: http://localhost:8080/docs
 - Health: http://localhost:8080/health
 
-O GitHub Pages publica o dashboard React automaticamente em pushes para `main` que alterem o frontend e diariamente às 07:00 UTC. Para dados dinâmicos, configure no repositório a variável Actions `VITE_API_URL` com a URL HTTPS de um backend OMIP hospedado; GitHub Pages não executa Spring Boot nem PostgreSQL.
+O modo padrão não requer servidor nem banco pagos. O GitHub Actions coleta diariamente às 07:00 UTC, grava apenas novas observações em `frontend/public/data/prices.json` e `prices.csv`, e o GitHub Pages publica o dashboard. Em repositório público, esse desenho utiliza os níveis gratuitos do GitHub; continuam sujeitos aos limites e termos vigentes da plataforma.
+
+O dashboard lê o JSON estático por padrão. Para usar o modo completo, configure no repositório a variável Actions `VITE_API_URL` com a URL HTTPS do backend OMIP hospedado.
 
 O Compose habilita um coletor demonstrativo para validar o fluxo. Ele usa domínio `.invalid` e confiança `0`; desabilite em produção com `DEMO_COLLECTOR_ENABLED=false`. O endpoint administrativo também deve ser desabilitado ou protegido: `ADMIN_ENDPOINT_ENABLED=false`.
 

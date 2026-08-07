@@ -1,23 +1,21 @@
 {
-  "generatedAt": "2026-08-07T00:00:00Z",
+  "generatedAt": "2026-08-07T09:59:35.997944+00:00",
   "boxWeightKg": 40.8,
   "content": [
     {
       "country": "BR",
       "label": "Caixa Brasil — CEPEA",
-      "product": "Laranja indústria — pera e tardias",
-      "marketLevel": "Posta na indústria, a prazo",
-      "referencePeriod": "06/08/2026",
-      "pricePerKg": 0.761765,
-      "priceBoxOriginal": 31.08,
+      "product": "Laranja pera in natura",
+      "marketLevel": "Média simples de 4 regiões, na árvore",
+      "referencePeriod": "2026-08-06",
+      "pricePerKg": 0.784681,
+      "priceBoxOriginal": 32.015,
       "originalCurrency": "BRL",
-      "priceBoxBrl": 31.08,
-      "dailyChangePercent": 0.48,
-      "fiveDayAverage": 30.92,
-      "source": "CEPEA/ESALQ-USP",
+      "priceBoxBrl": 32.015,
+      "source": "HORTIFRUTI/CEPEA",
       "license": "CC BY-NC 4.0",
       "licenseUrl": "https://creativecommons.org/licenses/by-nc/4.0/",
-      "url": "https://www.cepea.org.br/br/indicador/citros.aspx"
+      "url": "https://www.hfbrasil.org.br/br/estatistica/citros.aspx"
     },
     {
       "country": "CN",

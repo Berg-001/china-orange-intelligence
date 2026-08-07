@@ -20,6 +20,10 @@ CONFIG = ROOT / "config" / "static-sources.json"
 DATA_DIR = ROOT / "frontend" / "public" / "data"
 JSON_PATH = DATA_DIR / "prices.json"
 CSV_PATH = DATA_DIR / "prices.csv"
+CEPEA_JSON_PATH = DATA_DIR / "cepea-citrus.json"
+CEPEA_CSV_PATH = DATA_DIR / "cepea-citrus.csv"
+BENCHMARKS_PATH = DATA_DIR / "benchmarks.json"
+HF_CITRUS_URL = "https://www.hfbrasil.org.br/br/estatistica/citros.aspx"
 USER_AGENT = "OMIP/0.1 (+https://github.com/Berg-001/china-orange-intelligence)"
 TIMEOUT = 30
 ARTICLE_LINK = re.compile(r"/jgzs/wenzixiangqingye/detail/\d{8}/[^\"'#?]+\.html")
@@ -119,6 +123,80 @@ def discover_urls(session: requests.Session, source: dict) -> list[str]:
     return list(dict.fromkeys(urls))[: int(source.get("maxArticles", 20))]
 
 
+def hf_reference_date(day_month: str, today: date) -> date:
+    day, month = map(int, day_month.split("/"))
+    candidate = date(today.year, month, day)
+    if candidate > today:
+        candidate = date(today.year - 1, month, day)
+    return candidate
+
+
+def collect_hf_cepea(session: requests.Session) -> int:
+    """Append official HF Brasil/CEPEA regional pear-orange observations."""
+    soup = BeautifulSoup(get(session, HF_CITRUS_URL), "html.parser")
+    table = soup.find("table")
+    if table is None:
+        raise RuntimeError("HF Brasil citrus price table not found")
+    rows = table.find_all("tr")
+    headers = [cell.get_text(" ", strip=True) for cell in rows[0].find_all(["th", "td"])]
+    if len(headers) < 4 or headers[:3] != ["Produto", "Região", "Unidade"]:
+        raise RuntimeError("HF Brasil citrus table contract changed")
+    today = datetime.now(timezone.utc).date()
+    incoming = []
+    for tr in rows[1:]:
+        cells = [cell.get_text(" ", strip=True) for cell in tr.find_all(["th", "td"])]
+        if len(cells) != len(headers) or not cells[0].startswith("Laranja Pêra") or "40,8" not in cells[2]:
+            continue
+        region = cells[1].replace(" (região)", "")
+        for heading, raw in zip(headers[3:], cells[3:]):
+            if not re.fullmatch(r"\d{2}/[a-zç]{3}", heading.lower()) or not re.fullmatch(r"\d+[,.]\d{2}", raw):
+                continue
+            months = {"jan": 1, "fev": 2, "mar": 3, "abr": 4, "mai": 5, "jun": 6,
+                      "jul": 7, "ago": 8, "set": 9, "out": 10, "nov": 11, "dez": 12}
+            day_text, month_text = heading.lower().split("/")
+            reference = date(today.year, months[month_text], int(day_text))
+            if reference > today:
+                reference = date(today.year - 1, months[month_text], int(day_text))
+            value = float(raw.replace(".", "").replace(",", "."))
+            incoming.append({"product": "FRESH_ORANGE", "date": reference.isoformat(),
+                             "price": value, "region": region, "marketLevel": "Na árvore",
+                             "source": "HORTIFRUTI/CEPEA"})
+    if not incoming:
+        raise RuntimeError("HF Brasil returned no compatible pear-orange observations")
+    payload = json.loads(CEPEA_JSON_PATH.read_text(encoding="utf-8")) if CEPEA_JSON_PATH.exists() else {}
+    existing = payload.get("content", [])
+    keys = {(row.get("product"), row.get("date"), row.get("region"), row.get("source")) for row in existing}
+    added = [row for row in incoming if (row["product"], row["date"], row["region"], row["source"]) not in keys]
+    if not added:
+        return 0
+    content = existing + added
+    content.sort(key=lambda row: (row["date"], row["product"], row.get("region", "")), reverse=True)
+    payload.update({"source": "CEPEA/ESALQ-USP and HORTIFRUTI/CEPEA", "url": HF_CITRUS_URL,
+                    "license": "CC BY-NC 4.0", "licenseUrl": "https://creativecommons.org/licenses/by-nc/4.0/",
+                    "currency": "BRL", "unit": "box_40_8_kg", "content": content})
+    CEPEA_JSON_PATH.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    fields = ["product", "date", "price", "region", "marketLevel", "dailyChangePercent",
+              "monthlyChangePercent", "fiveDayAverage", "source"]
+    with CEPEA_CSV_PATH.open("w", newline="", encoding="utf-8-sig") as handle:
+        writer = csv.DictWriter(handle, fieldnames=fields, extrasaction="ignore")
+        writer.writeheader()
+        writer.writerows(content)
+    latest = max(row["date"] for row in incoming)
+    latest_rows = [row for row in incoming if row["date"] == latest]
+    average = sum(Decimal(str(row["price"])) for row in latest_rows) / Decimal(len(latest_rows))
+    benchmarks = json.loads(BENCHMARKS_PATH.read_text(encoding="utf-8"))
+    brazil = next(row for row in benchmarks["content"] if row["country"] == "BR")
+    brazil.update({"product": "Laranja pera in natura", "marketLevel": "Média simples de 4 regiões, na árvore",
+                   "referencePeriod": latest, "pricePerKg": decimal(average / Decimal("40.8")),
+                   "priceBoxOriginal": decimal(average), "priceBoxBrl": decimal(average),
+                   "source": "HORTIFRUTI/CEPEA", "url": HF_CITRUS_URL})
+    brazil.pop("dailyChangePercent", None)
+    brazil.pop("fiveDayAverage", None)
+    benchmarks["generatedAt"] = datetime.now(timezone.utc).isoformat()
+    BENCHMARKS_PATH.write_text(json.dumps(benchmarks, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    return len(added)
+
+
 def load_existing() -> list[dict]:
     if not JSON_PATH.exists():
         return []
@@ -145,6 +223,11 @@ def main() -> int:
     existing = {row["id"]: row for row in load_existing()}
     previous_ids = set(existing)
     errors = []
+    try:
+        hf_added = collect_hf_cepea(session)
+        print(f"Added {hf_added} HF Brasil/CEPEA regional observations")
+    except Exception as exc:
+        errors.append(f"HORTIFRUTI/CEPEA: {exc}")
     for source in config["sources"]:
         if not source.get("enabled"):
             continue

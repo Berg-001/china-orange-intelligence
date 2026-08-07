@@ -1,4 +1,4 @@
-name: Collect China orange prices
+name: Collect China and CEPEA orange prices
 
 on:
   workflow_dispatch:
@@ -32,6 +32,6 @@ jobs:
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add frontend/public/data/prices.json frontend/public/data/prices.csv
+          git add frontend/public/data/
           git commit -m "data: update China orange prices"
           git push

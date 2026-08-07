@@ -1,6 +1,6 @@
 {
-  "source": "CEPEA/ESALQ-USP",
-  "url": "https://www.cepea.org.br/br/indicador/citros.aspx",
+  "source": "CEPEA/ESALQ-USP and HORTIFRUTI/CEPEA",
+  "url": "https://www.hfbrasil.org.br/br/estatistica/citros.aspx",
   "license": "CC BY-NC 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-nc/4.0/",
   "permittedUse": "non-commercial with attribution",
@@ -9,20 +9,280 @@
   "currency": "BRL",
   "unit": "box_40_8_kg",
   "content": [
-    {"product":"INDUSTRIAL_ORANGE","date":"2026-08-06","price":31.08,"dailyChangePercent":0.48,"monthlyChangePercent":1.67,"fiveDayAverage":30.92},
-    {"product":"INDUSTRIAL_ORANGE","date":"2026-08-05","price":30.93,"dailyChangePercent":-0.23,"monthlyChangePercent":1.18,"fiveDayAverage":30.81},
-    {"product":"INDUSTRIAL_ORANGE","date":"2026-08-04","price":31.00,"dailyChangePercent":0.00,"monthlyChangePercent":1.41,"fiveDayAverage":30.76},
-    {"product":"INDUSTRIAL_ORANGE","date":"2026-08-03","price":31.00,"dailyChangePercent":1.41,"monthlyChangePercent":1.41,"fiveDayAverage":30.70},
-    {"product":"INDUSTRIAL_ORANGE","date":"2026-07-31","price":30.57,"dailyChangePercent":0.00,"monthlyChangePercent":-0.20,"fiveDayAverage":30.63},
-    {"product":"FRESH_ORANGE","date":"2026-08-06","price":31.67,"dailyChangePercent":0.92,"monthlyChangePercent":-4.00,"fiveDayAverage":31.92},
-    {"product":"FRESH_ORANGE","date":"2026-08-05","price":31.38,"dailyChangePercent":0.26,"monthlyChangePercent":-4.88,"fiveDayAverage":32.32},
-    {"product":"FRESH_ORANGE","date":"2026-08-04","price":31.30,"dailyChangePercent":-2.95,"monthlyChangePercent":-5.12,"fiveDayAverage":32.60},
-    {"product":"FRESH_ORANGE","date":"2026-08-03","price":32.25,"dailyChangePercent":-2.24,"monthlyChangePercent":-2.24,"fiveDayAverage":32.76},
-    {"product":"FRESH_ORANGE","date":"2026-07-31","price":32.99,"dailyChangePercent":-2.05,"monthlyChangePercent":-4.43,"fiveDayAverage":32.26},
-    {"product":"EARLY_INDUSTRIAL_ORANGE","date":"2026-08-06","price":24.71,"dailyChangePercent":-0.28,"monthlyChangePercent":2.53},
-    {"product":"EARLY_INDUSTRIAL_ORANGE","date":"2026-08-05","price":24.78,"dailyChangePercent":0.90,"monthlyChangePercent":2.82},
-    {"product":"EARLY_INDUSTRIAL_ORANGE","date":"2026-08-04","price":24.56,"dailyChangePercent":0.00,"monthlyChangePercent":1.91},
-    {"product":"EARLY_INDUSTRIAL_ORANGE","date":"2026-08-03","price":24.56,"dailyChangePercent":1.91,"monthlyChangePercent":1.91},
-    {"product":"EARLY_INDUSTRIAL_ORANGE","date":"2026-07-31","price":24.10,"dailyChangePercent":-2.74,"monthlyChangePercent":-8.47}
+    {
+      "product": "INDUSTRIAL_ORANGE",
+      "date": "2026-08-06",
+      "price": 31.08,
+      "dailyChangePercent": 0.48,
+      "monthlyChangePercent": 1.67,
+      "fiveDayAverage": 30.92
+    },
+    {
+      "product": "FRESH_ORANGE",
+      "date": "2026-08-06",
+      "price": 28.88,
+      "region": "Mogiana",
+      "marketLevel": "Na árvore",
+      "source": "HORTIFRUTI/CEPEA"
+    },
+    {
+      "product": "FRESH_ORANGE",
+      "date": "2026-08-06",
+      "price": 34.0,
+      "region": "Limeira",
+      "marketLevel": "Na árvore",
+      "source": "HORTIFRUTI/CEPEA"
+    },
+    {
+      "product": "FRESH_ORANGE",
+      "date": "2026-08-06",
+      "price": 29.83,
+      "region": "Bebedouro",
+      "marketLevel": "Na árvore",
+      "source": "HORTIFRUTI/CEPEA"
+    },
+    {
+      "product": "FRESH_ORANGE",
+      "date": "2026-08-06",
+      "price": 35.35,
+      "region": "Araraquara",
+      "marketLevel": "Na árvore",
+      "source": "HORTIFRUTI/CEPEA"
+    },
+    {
+      "product": "FRESH_ORANGE",
+      "date": "2026-08-06",
+      "price": 31.67,
+      "dailyChangePercent": 0.92,
+      "monthlyChangePercent": -4.0,
+      "fiveDayAverage": 31.92
+    },
+    {
+      "product": "EARLY_INDUSTRIAL_ORANGE",
+      "date": "2026-08-06",
+      "price": 24.71,
+      "dailyChangePercent": -0.28,
+      "monthlyChangePercent": 2.53
+    },
+    {
+      "product": "INDUSTRIAL_ORANGE",
+      "date": "2026-08-05",
+      "price": 30.93,
+      "dailyChangePercent": -0.23,
+      "monthlyChangePercent": 1.18,
+      "fiveDayAverage": 30.81
+    },
+    {
+      "product": "FRESH_ORANGE",
+      "date": "2026-08-05",
+      "price": 28.88,
+      "region": "Mogiana",
+      "marketLevel": "Na árvore",
+      "source": "HORTIFRUTI/CEPEA"
+    },
+    {
+      "product": "FRESH_ORANGE",
+      "date": "2026-08-05",
+      "price": 34.0,
+      "region": "Limeira",
+      "marketLevel": "Na árvore",
+      "source": "HORTIFRUTI/CEPEA"
+    },
+    {
+      "product": "FRESH_ORANGE",
+      "date": "2026-08-05",
+      "price": 29.83,
+      "region": "Bebedouro",
+      "marketLevel": "Na árvore",
+      "source": "HORTIFRUTI/CEPEA"
+    },
+    {
+      "product": "FRESH_ORANGE",
+      "date": "2026-08-05",
+      "price": 34.7,
+      "region": "Araraquara",
+      "marketLevel": "Na árvore",
+      "source": "HORTIFRUTI/CEPEA"
+    },
+    {
+      "product": "FRESH_ORANGE",
+      "date": "2026-08-05",
+      "price": 31.38,
+      "dailyChangePercent": 0.26,
+      "monthlyChangePercent": -4.88,
+      "fiveDayAverage": 32.32
+    },
+    {
+      "product": "EARLY_INDUSTRIAL_ORANGE",
+      "date": "2026-08-05",
+      "price": 24.78,
+      "dailyChangePercent": 0.9,
+      "monthlyChangePercent": 2.82
+    },
+    {
+      "product": "INDUSTRIAL_ORANGE",
+      "date": "2026-08-04",
+      "price": 31.0,
+      "dailyChangePercent": 0.0,
+      "monthlyChangePercent": 1.41,
+      "fiveDayAverage": 30.76
+    },
+    {
+      "product": "FRESH_ORANGE",
+      "date": "2026-08-04",
+      "price": 30.33,
+      "region": "Mogiana",
+      "marketLevel": "Na árvore",
+      "source": "HORTIFRUTI/CEPEA"
+    },
+    {
+      "product": "FRESH_ORANGE",
+      "date": "2026-08-04",
+      "price": 32.6,
+      "region": "Limeira",
+      "marketLevel": "Na árvore",
+      "source": "HORTIFRUTI/CEPEA"
+    },
+    {
+      "product": "FRESH_ORANGE",
+      "date": "2026-08-04",
+      "price": 27.38,
+      "region": "Bebedouro",
+      "marketLevel": "Na árvore",
+      "source": "HORTIFRUTI/CEPEA"
+    },
+    {
+      "product": "FRESH_ORANGE",
+      "date": "2026-08-04",
+      "price": 35.35,
+      "region": "Araraquara",
+      "marketLevel": "Na árvore",
+      "source": "HORTIFRUTI/CEPEA"
+    },
+    {
+      "product": "FRESH_ORANGE",
+      "date": "2026-08-04",
+      "price": 31.3,
+      "dailyChangePercent": -2.95,
+      "monthlyChangePercent": -5.12,
+      "fiveDayAverage": 32.6
+    },
+    {
+      "product": "EARLY_INDUSTRIAL_ORANGE",
+      "date": "2026-08-04",
+      "price": 24.56,
+      "dailyChangePercent": 0.0,
+      "monthlyChangePercent": 1.91
+    },
+    {
+      "product": "INDUSTRIAL_ORANGE",
+      "date": "2026-08-03",
+      "price": 31.0,
+      "dailyChangePercent": 1.41,
+      "monthlyChangePercent": 1.41,
+      "fiveDayAverage": 30.7
+    },
+    {
+      "product": "FRESH_ORANGE",
+      "date": "2026-08-03",
+      "price": 30.33,
+      "region": "Mogiana",
+      "marketLevel": "Na árvore",
+      "source": "HORTIFRUTI/CEPEA"
+    },
+    {
+      "product": "FRESH_ORANGE",
+      "date": "2026-08-03",
+      "price": 32.6,
+      "region": "Limeira",
+      "marketLevel": "Na árvore",
+      "source": "HORTIFRUTI/CEPEA"
+    },
+    {
+      "product": "FRESH_ORANGE",
+      "date": "2026-08-03",
+      "price": 27.38,
+      "region": "Bebedouro",
+      "marketLevel": "Na árvore",
+      "source": "HORTIFRUTI/CEPEA"
+    },
+    {
+      "product": "FRESH_ORANGE",
+      "date": "2026-08-03",
+      "price": 35.35,
+      "region": "Araraquara",
+      "marketLevel": "Na árvore",
+      "source": "HORTIFRUTI/CEPEA"
+    },
+    {
+      "product": "FRESH_ORANGE",
+      "date": "2026-08-03",
+      "price": 32.25,
+      "dailyChangePercent": -2.24,
+      "monthlyChangePercent": -2.24,
+      "fiveDayAverage": 32.76
+    },
+    {
+      "product": "EARLY_INDUSTRIAL_ORANGE",
+      "date": "2026-08-03",
+      "price": 24.56,
+      "dailyChangePercent": 1.91,
+      "monthlyChangePercent": 1.91
+    },
+    {
+      "product": "INDUSTRIAL_ORANGE",
+      "date": "2026-07-31",
+      "price": 30.57,
+      "dailyChangePercent": 0.0,
+      "monthlyChangePercent": -0.2,
+      "fiveDayAverage": 30.63
+    },
+    {
+      "product": "FRESH_ORANGE",
+      "date": "2026-07-31",
+      "price": 30.33,
+      "region": "Mogiana",
+      "marketLevel": "Na árvore",
+      "source": "HORTIFRUTI/CEPEA"
+    },
+    {
+      "product": "FRESH_ORANGE",
+      "date": "2026-07-31",
+      "price": 32.6,
+      "region": "Limeira",
+      "marketLevel": "Na árvore",
+      "source": "HORTIFRUTI/CEPEA"
+    },
+    {
+      "product": "FRESH_ORANGE",
+      "date": "2026-07-31",
+      "price": 29.17,
+      "region": "Bebedouro",
+      "marketLevel": "Na árvore",
+      "source": "HORTIFRUTI/CEPEA"
+    },
+    {
+      "product": "FRESH_ORANGE",
+      "date": "2026-07-31",
+      "price": 35.35,
+      "region": "Araraquara",
+      "marketLevel": "Na árvore",
+      "source": "HORTIFRUTI/CEPEA"
+    },
+    {
+      "product": "FRESH_ORANGE",
+      "date": "2026-07-31",
+      "price": 32.99,
+      "dailyChangePercent": -2.05,
+      "monthlyChangePercent": -4.43,
+      "fiveDayAverage": 32.26
+    },
+    {
+      "product": "EARLY_INDUSTRIAL_ORANGE",
+      "date": "2026-07-31",
+      "price": 24.1,
+      "dailyChangePercent": -2.74,
+      "monthlyChangePercent": -8.47
+    }
   ]
 }

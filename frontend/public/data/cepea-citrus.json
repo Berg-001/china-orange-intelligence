@@ -3,6 +3,9 @@
   "url": "https://www.cepea.org.br/br/indicador/citros.aspx",
   "license": "CC BY-NC 4.0",
   "licenseUrl": "https://creativecommons.org/licenses/by-nc/4.0/",
+  "permittedUse": "non-commercial with attribution",
+  "commercialUse": "requires express authorization from CEPEA",
+  "licensingContact": "onetoone@cepea.org.br",
   "currency": "BRL",
   "unit": "box_40_8_kg",
   "content": [

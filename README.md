@@ -58,6 +58,8 @@ Novos registros com país diferente de `CN` são rejeitados no normalizador e po
 
 ## Qualidade dos dados
 
+Os dados CEPEA são usados exclusivamente para fins não comerciais, com atribuição, sob CC BY-NC 4.0. Uso comercial exige autorização expressa do CEPEA. Consulte `docs/data-licenses.md`.
+
 Antes de ativar um coletor real, documente no código e em `docs/sources.md`: proprietário, URL oficial, licença/termos, significado do produto, unidade, periodicidade, timezone, tratamento de revisões e fixtures de contrato. Scraping não deve ser ativado até a estabilidade e permissão de uso serem verificadas.
 
 As taxas cambiais configuráveis são apenas fallback da POC e aparecem explicitamente como `CONFIGURED_FALLBACK`. Uma implantação real deve integrar a API oficial EXR do BCE e falhar de modo seguro quando a taxa aplicável não estiver disponível.

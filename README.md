@@ -28,6 +28,8 @@ Acessos:
 - OpenAPI/Swagger: http://localhost:8080/docs
 - Health: http://localhost:8080/health
 
+O GitHub Pages publica o dashboard React automaticamente em pushes para `main` que alterem o frontend e diariamente às 07:00 UTC. Para dados dinâmicos, configure no repositório a variável Actions `VITE_API_URL` com a URL HTTPS de um backend OMIP hospedado; GitHub Pages não executa Spring Boot nem PostgreSQL.
+
 O Compose habilita um coletor demonstrativo para validar o fluxo. Ele usa domínio `.invalid` e confiança `0`; desabilite em produção com `DEMO_COLLECTOR_ENABLED=false`. O endpoint administrativo também deve ser desabilitado ou protegido: `ADMIN_ENDPOINT_ENABLED=false`.
 
 O coletor de boletins da Comissão de Desenvolvimento e Reforma de Nantong é opt-in. Ele aceita somente linhas de laranja com unidade explícita `元/500克`, converte 500 g para kg e rejeita páginas sem data ou sem linhas compatíveis. Configure URLs oficiais homologadas em `NANTONG_BULLETIN_URLS` e ative `NANTONG_COLLECTOR_ENABLED=true`.

@@ -1,0 +1,34 @@
+{
+  "generatedAt": "2026-08-07T00:00:00Z",
+  "boxWeightKg": 40.8,
+  "content": [
+    {
+      "country": "BR",
+      "label": "Caixa Brasil — CEPEA",
+      "product": "Laranja pera in natura",
+      "marketLevel": "Na árvore ao produtor",
+      "referencePeriod": "Média de março/2026",
+      "pricePerKg": 1.072549,
+      "priceBoxOriginal": 43.76,
+      "originalCurrency": "BRL",
+      "priceBoxBrl": 43.76,
+      "source": "CEPEA/ESALQ-USP",
+      "url": "https://cepea.org.br/br/diarias-de-mercado/citros-cepea-com-oferta-reduzida-preco-da-laranja-de-mesa-inicia-abril-em-alta.aspx?pagina=976"
+    },
+    {
+      "country": "CN",
+      "label": "Caixa equivalente — China",
+      "product": "Laranja navel in natura",
+      "marketLevel": "Atacado na origem, média nacional",
+      "referencePeriod": "Média de janeiro a abril/2026",
+      "pricePerKg": 1.79,
+      "priceBoxOriginal": 73.032,
+      "originalCurrency": "CNY",
+      "priceBoxBrl": 53.999368,
+      "fxSource": "ECB_EXR_REFERENCE",
+      "fxReferenceDate": "2026-05-20",
+      "source": "Xinhua Index",
+      "url": "https://cq.news.cn/20260520/26bfb69532824cf0b3e80dd5a93eac12/c.html"
+    }
+  ]
+}

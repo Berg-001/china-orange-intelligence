@@ -1,0 +1,31 @@
+spring:
+  application.name: orange-market-intelligence
+  datasource:
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/omip}
+    username: ${DATABASE_USER:omip}
+    password: ${DATABASE_PASSWORD:omip}
+  jpa:
+    open-in-view: false
+    hibernate.ddl-auto: validate
+  flyway.enabled: true
+server.port: ${PORT:8080}
+management.endpoints.web.exposure.include: health,info,metrics
+springdoc.swagger-ui.path: /docs
+omip:
+  scheduler.cron: ${COLLECTION_CRON:0 0 7 * * *}
+  collectors:
+    demo.enabled: ${DEMO_COLLECTOR_ENABLED:false}
+    nantong:
+      enabled: ${NANTONG_COLLECTOR_ENABLED:false}
+      urls: ${NANTONG_BULLETIN_URLS:}
+    yunfu:
+      enabled: ${YUNFU_COLLECTOR_ENABLED:false}
+      urls: ${YUNFU_BULLETIN_URLS:}
+    xinhua:
+      enabled: ${XINHUA_COLLECTOR_ENABLED:false}
+      urls: ${XINHUA_ORANGE_JUICE_URLS:}
+  admin.enabled: ${ADMIN_ENDPOINT_ENABLED:false}
+  cors.allowed-origin: ${CORS_ALLOWED_ORIGIN:http://localhost:5173}
+  fx:
+    usd-per-brl: ${USD_PER_BRL:0.18}
+    usd-per-cny: ${USD_PER_CNY:0.139}

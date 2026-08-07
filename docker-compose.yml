@@ -1,84 +1,46 @@
 services:
-  pipeline:
-    build:
-      context: .
-      dockerfile: Dockerfile
-
-    container_name: china-orange-pipeline
-
+  postgres:
+    image: postgres:17-alpine
     environment:
-      PIPELINE_API_KEY: ${PIPELINE_API_KEY:-change_me_pipeline_key}
-      TZ: ${GENERIC_TIMEZONE:-America/Sao_Paulo}
-
-      # Benchmark comercial (Tridge)
-      TRIDGE_PRICE_USD_KG: ${TRIDGE_PRICE_USD_KG:-0.91}
-      ORANGE_BOX_WEIGHT_KG: ${ORANGE_BOX_WEIGHT_KG:-40.8}
-      TRIDGE_REFERENCE_YEAR: ${TRIDGE_REFERENCE_YEAR:-2026}
-
+      POSTGRES_DB: omip
+      POSTGRES_USER: omip
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD:-omip}
     volumes:
-      - ./data:/app/data
-      - ./output:/app/output
-      - ./logs:/app/logs
-
-    ports:
-      - "8000:8000"
-
-    restart: unless-stopped
-
-    networks:
-      - orange-net
-
-
-  n8n:
-    image: docker.n8n.io/n8nio/n8n:latest
-    container_name: china-orange-n8n
-
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U omip -d omip"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    ports: ["5432:5432"]
+  backend:
+    build: ./backend
     environment:
-      N8N_BASIC_AUTH_ACTIVE: ${N8N_BASIC_AUTH_ACTIVE:-true}
-      N8N_BASIC_AUTH_USER: ${N8N_BASIC_AUTH_USER:-admin}
-      N8N_BASIC_AUTH_PASSWORD: ${N8N_BASIC_AUTH_PASSWORD:-change_me}
-      N8N_ENCRYPTION_KEY: ${N8N_ENCRYPTION_KEY:-change_this_with_a_long_random_value}
-
-      GENERIC_TIMEZONE: ${GENERIC_TIMEZONE:-America/Sao_Paulo}
-      TZ: ${GENERIC_TIMEZONE:-America/Sao_Paulo}
-
-      PIPELINE_API_KEY: ${PIPELINE_API_KEY:-change_me_pipeline_key}
-
-    volumes:
-      - ./n8n_data:/home/node/.n8n
-      - ./workflows:/workflows:ro
-
-    ports:
-      - "5678:5678"
-
+      DATABASE_URL: jdbc:postgresql://postgres:5432/omip
+      DATABASE_USER: omip
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD:-omip}
+      COLLECTION_CRON: ${COLLECTION_CRON:-0 0 7 * * *}
+      DEMO_COLLECTOR_ENABLED: ${DEMO_COLLECTOR_ENABLED:-true}
+      NANTONG_COLLECTOR_ENABLED: ${NANTONG_COLLECTOR_ENABLED:-false}
+      NANTONG_BULLETIN_URLS: ${NANTONG_BULLETIN_URLS:-}
+      YUNFU_COLLECTOR_ENABLED: ${YUNFU_COLLECTOR_ENABLED:-false}
+      YUNFU_BULLETIN_URLS: ${YUNFU_BULLETIN_URLS:-}
+      XINHUA_COLLECTOR_ENABLED: ${XINHUA_COLLECTOR_ENABLED:-false}
+      XINHUA_ORANGE_JUICE_URLS: ${XINHUA_ORANGE_JUICE_URLS:-}
+      ADMIN_ENDPOINT_ENABLED: ${ADMIN_ENDPOINT_ENABLED:-true}
+      USD_PER_BRL: ${USD_PER_BRL:-0.18}
+      USD_PER_CNY: ${USD_PER_CNY:-0.139}
     depends_on:
-      - pipeline
-
-    restart: unless-stopped
-
-    networks:
-      - orange-net
-
-
-  dashboard:
-    image: nginx:alpine
-    container_name: china-orange-dashboard
-
-    volumes:
-      - ./output:/usr/share/nginx/html:ro
-
-    ports:
-      - "8080:80"
-
-    depends_on:
-      - pipeline
-
-    restart: unless-stopped
-
-    networks:
-      - orange-net
-
-
-networks:
-  orange-net:
-    driver: bridge
+      postgres: {condition: service_healthy}
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:8080/actuator/health"]
+      interval: 10s
+      timeout: 3s
+      retries: 10
+    ports: ["8080:8080"]
+  frontend:
+    build: ./frontend
+    depends_on: [backend]
+    ports: ["3000:80"]
+volumes:
+  postgres_data:

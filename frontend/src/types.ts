@@ -1,0 +1,2 @@
+export type Price={id:string;country:string;city?:string;market:string;product:string;category:string;originalPrice:number;originalCurrency:string;originalUnit:string;pricePerKg:number;priceUsd:number;priceBrl:number;priceCny:number;source:string;url:string;confidenceScore:number;referenceDate:string;collectionTime:string;consensus:boolean};
+export type PricePage={content:Price[];totalElements:number;totalPages:number};

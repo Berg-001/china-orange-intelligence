@@ -5,15 +5,17 @@
     {
       "country": "BR",
       "label": "Caixa Brasil — CEPEA",
-      "product": "Laranja pera in natura",
-      "marketLevel": "Na árvore ao produtor",
-      "referencePeriod": "Média de março/2026",
-      "pricePerKg": 1.072549,
-      "priceBoxOriginal": 43.76,
+      "product": "Laranja indústria — pera e tardias",
+      "marketLevel": "Posta na indústria, a prazo",
+      "referencePeriod": "06/08/2026",
+      "pricePerKg": 0.761765,
+      "priceBoxOriginal": 31.08,
       "originalCurrency": "BRL",
-      "priceBoxBrl": 43.76,
+      "priceBoxBrl": 31.08,
+      "dailyChangePercent": 0.48,
+      "fiveDayAverage": 30.92,
       "source": "CEPEA/ESALQ-USP",
-      "url": "https://cepea.org.br/br/diarias-de-mercado/citros-cepea-com-oferta-reduzida-preco-da-laranja-de-mesa-inicia-abril-em-alta.aspx?pagina=976"
+      "url": "https://www.cepea.org.br/br/indicador/citros.aspx"
     },
     {
       "country": "CN",

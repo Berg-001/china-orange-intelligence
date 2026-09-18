@@ -1,6 +1,56 @@
 {
-  "generatedAt": "2026-09-11T11:58:45.776006+00:00",
+  "generatedAt": "2026-09-18T12:01:05.053982+00:00",
   "content": [
+    {
+      "id": "3975b9a392e6aa49bfde013d939f6350",
+      "country": "CN",
+      "city": null,
+      "market": "China national factory-gate aggregate",
+      "product": "NFC",
+      "productNameOriginal": "国内非浓缩还原橙汁",
+      "specification": "Domestic factory-gate aggregate",
+      "category": "INDUSTRY",
+      "originalPrice": 6470.79,
+      "originalCurrency": "CNY",
+      "originalUnit": "tonne",
+      "pricePerKg": 6.47079,
+      "priceUsd": 0.964707,
+      "priceBrl": 4.949576,
+      "priceCny": 6.47079,
+      "fxSource": "ECB_EXR_REFERENCE",
+      "fxReferenceDate": "2026-09-17",
+      "source": "Xinhua Index / Chongqing Three Gorges Citrus Trading Center",
+      "url": "https://indices.cnfin.com/jgzs/wenzixiangqingye/detail/20260917/4471462_1.html",
+      "confidenceScore": 80,
+      "referenceDate": "2026-09-17",
+      "collectionTime": "2026-09-18T12:01:01.864921+00:00",
+      "consensus": false
+    },
+    {
+      "id": "ec41614106775a8e36f22b4ee1ed59be",
+      "country": "CN",
+      "city": null,
+      "market": "China national factory-gate aggregate",
+      "product": "FCOJ",
+      "productNameOriginal": "国内冷冻浓缩橙汁",
+      "specification": "Domestic factory-gate aggregate",
+      "category": "INDUSTRY",
+      "originalPrice": 23414.86,
+      "originalCurrency": "CNY",
+      "originalUnit": "tonne",
+      "pricePerKg": 23.41486,
+      "priceUsd": 3.490839,
+      "priceBrl": 17.910274,
+      "priceCny": 23.41486,
+      "fxSource": "ECB_EXR_REFERENCE",
+      "fxReferenceDate": "2026-09-17",
+      "source": "Xinhua Index / Chongqing Three Gorges Citrus Trading Center",
+      "url": "https://indices.cnfin.com/jgzs/wenzixiangqingye/detail/20260917/4471462_1.html",
+      "confidenceScore": 80,
+      "referenceDate": "2026-09-17",
+      "collectionTime": "2026-09-18T12:01:01.864921+00:00",
+      "consensus": false
+    },
     {
       "id": "a0fd1b02abff1c5adce7e11fe28b7018",
       "country": "CN",
@@ -402,5 +452,5 @@
       "consensus": false
     }
   ],
-  "totalElements": 16
+  "totalElements": 18
 }

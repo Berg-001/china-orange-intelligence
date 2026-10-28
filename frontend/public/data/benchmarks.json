@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-07T09:59:35.997944+00:00",
+  "generatedAt": "2026-10-28T13:43:41.971226+00:00",
   "boxWeightKg": 40.8,
   "content": [
     {
@@ -7,11 +7,11 @@
       "label": "Caixa Brasil — CEPEA",
       "product": "Laranja pera in natura",
       "marketLevel": "Média simples de 4 regiões, na árvore",
-      "referencePeriod": "2026-08-06",
-      "pricePerKg": 0.784681,
-      "priceBoxOriginal": 32.015,
+      "referencePeriod": "2026-10-27",
+      "pricePerKg": 0.789951,
+      "priceBoxOriginal": 32.23,
       "originalCurrency": "BRL",
-      "priceBoxBrl": 32.015,
+      "priceBoxBrl": 32.23,
       "source": "HORTIFRUTI/CEPEA",
       "license": "CC BY-NC 4.0",
       "licenseUrl": "https://creativecommons.org/licenses/by-nc/4.0/",

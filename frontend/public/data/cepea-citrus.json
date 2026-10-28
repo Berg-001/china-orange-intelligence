@@ -10,6 +10,166 @@
   "unit": "box_40_8_kg",
   "content": [
     {
+      "product": "FRESH_ORANGE",
+      "date": "2026-10-27",
+      "price": 29.0,
+      "region": "Mogiana",
+      "marketLevel": "Na árvore",
+      "source": "HORTIFRUTI/CEPEA"
+    },
+    {
+      "product": "FRESH_ORANGE",
+      "date": "2026-10-27",
+      "price": 35.57,
+      "region": "Limeira",
+      "marketLevel": "Na árvore",
+      "source": "HORTIFRUTI/CEPEA"
+    },
+    {
+      "product": "FRESH_ORANGE",
+      "date": "2026-10-27",
+      "price": 32.0,
+      "region": "Bebedouro",
+      "marketLevel": "Na árvore",
+      "source": "HORTIFRUTI/CEPEA"
+    },
+    {
+      "product": "FRESH_ORANGE",
+      "date": "2026-10-27",
+      "price": 32.35,
+      "region": "Araraquara",
+      "marketLevel": "Na árvore",
+      "source": "HORTIFRUTI/CEPEA"
+    },
+    {
+      "product": "FRESH_ORANGE",
+      "date": "2026-10-26",
+      "price": 29.75,
+      "region": "Mogiana",
+      "marketLevel": "Na árvore",
+      "source": "HORTIFRUTI/CEPEA"
+    },
+    {
+      "product": "FRESH_ORANGE",
+      "date": "2026-10-26",
+      "price": 35.57,
+      "region": "Limeira",
+      "marketLevel": "Na árvore",
+      "source": "HORTIFRUTI/CEPEA"
+    },
+    {
+      "product": "FRESH_ORANGE",
+      "date": "2026-10-26",
+      "price": 34.4,
+      "region": "Bebedouro",
+      "marketLevel": "Na árvore",
+      "source": "HORTIFRUTI/CEPEA"
+    },
+    {
+      "product": "FRESH_ORANGE",
+      "date": "2026-10-26",
+      "price": 32.35,
+      "region": "Araraquara",
+      "marketLevel": "Na árvore",
+      "source": "HORTIFRUTI/CEPEA"
+    },
+    {
+      "product": "FRESH_ORANGE",
+      "date": "2026-10-23",
+      "price": 28.3,
+      "region": "Mogiana",
+      "marketLevel": "Na árvore",
+      "source": "HORTIFRUTI/CEPEA"
+    },
+    {
+      "product": "FRESH_ORANGE",
+      "date": "2026-10-23",
+      "price": 35.57,
+      "region": "Limeira",
+      "marketLevel": "Na árvore",
+      "source": "HORTIFRUTI/CEPEA"
+    },
+    {
+      "product": "FRESH_ORANGE",
+      "date": "2026-10-23",
+      "price": 34.88,
+      "region": "Bebedouro",
+      "marketLevel": "Na árvore",
+      "source": "HORTIFRUTI/CEPEA"
+    },
+    {
+      "product": "FRESH_ORANGE",
+      "date": "2026-10-23",
+      "price": 32.35,
+      "region": "Araraquara",
+      "marketLevel": "Na árvore",
+      "source": "HORTIFRUTI/CEPEA"
+    },
+    {
+      "product": "FRESH_ORANGE",
+      "date": "2026-10-22",
+      "price": 28.58,
+      "region": "Mogiana",
+      "marketLevel": "Na árvore",
+      "source": "HORTIFRUTI/CEPEA"
+    },
+    {
+      "product": "FRESH_ORANGE",
+      "date": "2026-10-22",
+      "price": 35.57,
+      "region": "Limeira",
+      "marketLevel": "Na árvore",
+      "source": "HORTIFRUTI/CEPEA"
+    },
+    {
+      "product": "FRESH_ORANGE",
+      "date": "2026-10-22",
+      "price": 34.88,
+      "region": "Bebedouro",
+      "marketLevel": "Na árvore",
+      "source": "HORTIFRUTI/CEPEA"
+    },
+    {
+      "product": "FRESH_ORANGE",
+      "date": "2026-10-22",
+      "price": 32.35,
+      "region": "Araraquara",
+      "marketLevel": "Na árvore",
+      "source": "HORTIFRUTI/CEPEA"
+    },
+    {
+      "product": "FRESH_ORANGE",
+      "date": "2026-10-21",
+      "price": 28.58,
+      "region": "Mogiana",
+      "marketLevel": "Na árvore",
+      "source": "HORTIFRUTI/CEPEA"
+    },
+    {
+      "product": "FRESH_ORANGE",
+      "date": "2026-10-21",
+      "price": 35.35,
+      "region": "Limeira",
+      "marketLevel": "Na árvore",
+      "source": "HORTIFRUTI/CEPEA"
+    },
+    {
+      "product": "FRESH_ORANGE",
+      "date": "2026-10-21",
+      "price": 34.88,
+      "region": "Bebedouro",
+      "marketLevel": "Na árvore",
+      "source": "HORTIFRUTI/CEPEA"
+    },
+    {
+      "product": "FRESH_ORANGE",
+      "date": "2026-10-21",
+      "price": 34.7,
+      "region": "Araraquara",
+      "marketLevel": "Na árvore",
+      "source": "HORTIFRUTI/CEPEA"
+    },
+    {
       "product": "INDUSTRIAL_ORANGE",
       "date": "2026-08-06",
       "price": 31.08,

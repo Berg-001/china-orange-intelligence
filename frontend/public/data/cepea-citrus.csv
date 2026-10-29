@@ -1,4 +1,8 @@
 ﻿product,date,price,region,marketLevel,dailyChangePercent,monthlyChangePercent,fiveDayAverage,source
+FRESH_ORANGE,2026-10-28,31.0,Mogiana,Na árvore,,,,HORTIFRUTI/CEPEA
+FRESH_ORANGE,2026-10-28,36.67,Limeira,Na árvore,,,,HORTIFRUTI/CEPEA
+FRESH_ORANGE,2026-10-28,31.2,Bebedouro,Na árvore,,,,HORTIFRUTI/CEPEA
+FRESH_ORANGE,2026-10-28,32.35,Araraquara,Na árvore,,,,HORTIFRUTI/CEPEA
 FRESH_ORANGE,2026-10-27,29.0,Mogiana,Na árvore,,,,HORTIFRUTI/CEPEA
 FRESH_ORANGE,2026-10-27,35.57,Limeira,Na árvore,,,,HORTIFRUTI/CEPEA
 FRESH_ORANGE,2026-10-27,32.0,Bebedouro,Na árvore,,,,HORTIFRUTI/CEPEA

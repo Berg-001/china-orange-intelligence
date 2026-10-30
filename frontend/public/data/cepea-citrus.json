@@ -11,6 +11,38 @@
   "content": [
     {
       "product": "FRESH_ORANGE",
+      "date": "2026-10-29",
+      "price": 31.0,
+      "region": "Mogiana",
+      "marketLevel": "Na árvore",
+      "source": "HORTIFRUTI/CEPEA"
+    },
+    {
+      "product": "FRESH_ORANGE",
+      "date": "2026-10-29",
+      "price": 37.0,
+      "region": "Limeira",
+      "marketLevel": "Na árvore",
+      "source": "HORTIFRUTI/CEPEA"
+    },
+    {
+      "product": "FRESH_ORANGE",
+      "date": "2026-10-29",
+      "price": 30.25,
+      "region": "Bebedouro",
+      "marketLevel": "Na árvore",
+      "source": "HORTIFRUTI/CEPEA"
+    },
+    {
+      "product": "FRESH_ORANGE",
+      "date": "2026-10-29",
+      "price": 34.7,
+      "region": "Araraquara",
+      "marketLevel": "Na árvore",
+      "source": "HORTIFRUTI/CEPEA"
+    },
+    {
+      "product": "FRESH_ORANGE",
       "date": "2026-10-28",
       "price": 31.0,
       "region": "Mogiana",
